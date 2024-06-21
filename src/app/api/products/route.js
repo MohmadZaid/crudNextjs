@@ -4,7 +4,7 @@ import { connectionStr } from "../lib/db";
 import { Product } from "../lib/modal/product";
 
 export async function GET() {
-  let data: any[] = [];
+  let data = [];
   try {
     await mongoose.connect(connectionStr);
     data = await Product.find();
@@ -14,7 +14,7 @@ export async function GET() {
 
   return NextResponse.json(data);
 }
-export async function POST(req: { json: () => any }) {
+export async function POST(req) {
   let result;
   const payload = await req.json();
   try {
